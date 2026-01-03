@@ -36,6 +36,13 @@ pipeline {
         sh 'echo fruit =$FRT_PB'
       }
     }
+
+    stage ("Workspace variable") {
+      steps {
+        sh 'echo Current Workspace is $WORKSPACE'
+        sh 'ls $WORKSPACE'
+      }
+    }
   }
 }
       
