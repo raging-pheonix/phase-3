@@ -1,7 +1,7 @@
 pipeline {
   agent any
-  stages ("Multi step") {
-    stage {
+  stages {
+    stage  ("Multi step") {
       steps {
         sh 'echo "Running now"'
         sh  'uptime'
