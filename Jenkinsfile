@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  
+  environment {
+    APP_EN = 'developer'
+    FRT-PB = 'fruity pebbles'
+    
   stages {
         
     stage  ("Multi step") {
@@ -21,6 +26,13 @@ pipeline {
     stage ("Accessing the file") {
       steps {
         sh 'cat p-file.txt'
+      }
+    }
+
+    stage ("Printing environment variables") {
+      steps {
+        sh 'echo app = $APP_EN'
+        sh 'echo fruit = $FRB-PB'
       }
     }
   }
