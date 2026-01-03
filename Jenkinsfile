@@ -7,7 +7,7 @@ pipeline {
         sh 'echo "Running now"'
         sh  'uptime'
         sh 'free -m'
-        sh 'python app.py'
+        sh 'python3 app.py'
         sh 'echo "Finished the job"'
       }
     }
