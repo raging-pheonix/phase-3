@@ -43,6 +43,20 @@ pipeline {
         sh 'ls $WORKSPACE'
       }
     }
+
+    stage ("Failing stage") {
+      steps {
+        sh 'echo "This will be the start of the end"'
+        sh 'exit 1'
+        sh 'echo "You will not see this"'
+      }
+    }
+
+    stage ("Doesn't run stage") {
+      steps {
+        sh 'echo Never will be seen'
+      }
+    }
   }
 }
       
