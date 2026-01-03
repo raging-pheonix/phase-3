@@ -3,7 +3,7 @@ pipeline {
   
   environment {
     APP_EN = 'developer'
-    FRT-PB = 'fruity pebbles'
+    FRT_PB = 'fruity pebbles'
   }
     
   stages {
