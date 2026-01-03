@@ -11,6 +11,18 @@ pipeline {
         sh 'echo "Finished the job"'
       }
     }
+
+    stage ("Create a file") {
+      steps {
+        sh 'echo "Heeloo from mastery" > p-file.txt'
+      }
+    }
+
+    stage ("Accessing the file") {
+      steps {
+        sh 'cat p-file.txt'
+      }
+    }
   }
 }
       
