@@ -33,7 +33,7 @@ pipeline {
     stage ("Printing environment variables") {
       steps {
         sh 'echo app = $APP_EN'
-        sh 'echo fruit =$FRB_PB'
+        sh 'echo fruit =$FRT_PB'
       }
     }
   }
