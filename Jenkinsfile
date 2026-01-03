@@ -43,7 +43,7 @@ pipeline {
         sh 'ls $WORKSPACE'
       }
     }
-
+/*
     stage ("Failing stage") {
       steps {
         sh 'echo "This will be the start of the end"'
@@ -57,6 +57,7 @@ pipeline {
         sh 'echo Never will be seen'
       }
     }
+    */
   }
 }
       
