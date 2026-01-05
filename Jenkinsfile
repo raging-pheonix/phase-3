@@ -3,6 +3,7 @@ pipeline {
     docker {
       image  'python:3.10-slim'
     }
+  }
   
   environment {
     APP_EN = 'developer'
