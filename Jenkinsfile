@@ -1,8 +1,8 @@
 pipeline {
   agent { label 'python-agent' }
 
-  stages ('Check python version') {
-    stage {
+  stages  {
+    stage ('Check python version') {
       steps {
         sh '''
           python3 --version
@@ -11,14 +11,15 @@ pipeline {
           '''
     }
     }
-  }
-   stages ('Running the app') {
-     stage {
+  
+     
+     stage ('Running the app') {
        steps {
          sh 'python3 app.py'
      }
      }
-   }
+   
+  }
 }
 
   
