@@ -58,6 +58,14 @@ pipeline {
       }
     }
     */
+
+    stage ("Check context") {
+      steps {
+        sh 'whoami'
+        sh 'pwd'
+        sh 'which python || echo "python not found"'
+      }
+    }
   }
 }
       
