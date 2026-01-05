@@ -1,77 +1,21 @@
 pipeline {
-  agent {
-    docker {
-      image 'python-3.11-slim'
-      args '-u root'
-    }
-  }
-  
-  environment {
-    APP_EN = 'developer'
-    FRT_PB = 'fruity pebbles'
-  }
-    
-  stages {
-        
-    stage  ("Multi step") {
-      steps {
-        sh 'echo "Running now"'
-        sh  'uptime'
-        sh 'free -m'
-        sh 'python3 app.py'
-        sh 'echo "Finished the job"'
-      }
-    }
+  agent { label 'python-agent' }
 
-    stage ("Create a file") {
-      steps {
-        sh 'echo "Heeloo from mastery" > p-file.txt'
-      }
-    }
-
-    stage ("Accessing the file") {
-      steps {
-        sh 'cat p-file.txt'
-      }
-    }
-
-    stage ("Printing environment variables") {
-      steps {
-        sh 'echo app = $APP_EN'
-        sh 'echo fruit =$FRT_PB'
-      }
-    }
-
-    stage ("Workspace variable") {
-      steps {
-        sh 'echo Current Workspace is $WORKSPACE'
-        sh 'ls $WORKSPACE'
-      }
-    }
-/*
-    stage ("Failing stage") {
-      steps {
-        sh 'echo "This will be the start of the end"'
-        sh 'exit 1'
-        sh 'echo "You will not see this"'
-      }
-    }
-
-    stage ("Doesn't run stage") {
-      steps {
-        sh 'echo Never will be seen'
-      }
-    }
-    */
-
-    stage ("Check context") {
-      steps {
-        sh '''
-        python --version
-        pip --version
+  stages ('Check python version') {
+    steps {
+      sh '''
+        python3 --version
+        whoami
+        pwd
         '''
-      }
     }
   }
+   stages ('Running the app') {
+     steps {
+       sh 'python3 app.py'
+     }
+   }
 }
+
+  
       
