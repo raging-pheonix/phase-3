@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'python-3.11-slim'
+      args '-u root'
+    }
+  }
   
   environment {
     APP_EN = 'developer'
@@ -61,10 +66,10 @@ pipeline {
 
     stage ("Check context") {
       steps {
-        sh 'whoami'
-        sh 'uname -i'
-        sh 'which python || echo "python not found"'
-        sh 'env | sort'
+        sh '''
+        python --version
+        pip --version
+        '''
       }
     }
   }
